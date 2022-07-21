@@ -3,14 +3,10 @@ $alph = 'A-B-C';
 
 /* A | B | C | D | 4個 */
 
+$alphArr = explode('-', $alph);
 
-$x = explode('-',$alph);
-$y = array_push($x,'D');
-$z = implode(' | ',$x);
-echo $z;
+$count = array_push($alphArr, 'D');
 
-echo ' ' . count($x) . '個';
+array_push($alphArr, $count . '個');
 
-/*
-echo $domain . http_build_query(explode('　',$text));
-*/
+echo implode(' | ', $alphArr);
