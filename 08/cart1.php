@@ -1,7 +1,7 @@
 <?php
 $goods = [
-'name'  => '和風柄レターセット',
-'price' => 980,
+  'name'  => '和風柄レターセット',
+  'price' => 980,
 ];
 $count = $_POST['count'];
 $totalPrice = $goods['price'] * $count;
