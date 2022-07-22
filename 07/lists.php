@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>商品の選択</h2>
+    <h1>商品の選択</h1>
     <ul>
-        <li><a href="goods.php?id=1&value=テレビ">テレビ</a></li>
-        <li><a href="goods.php?id=2&value=パソコン">パソコン</a></li>
-        <li><a href="goods.php?id=3&value=携帯電話">携帯電話</a></li>
-        <li><a href="goods.php?id=4&value=冷蔵庫">冷蔵庫</a></li>
-        <li><a href="goods.php?id=5&value=洗濯機">洗濯機</a></li>
+        <li><a href="goods.php?id=0">テレビ</a></li>
+        <li><a href="goods.php?id=1">パソコン</a></li>
+        <li><a href="goods.php?id=2">携帯電話</a></li>
+        <li><a href="goods.php?id=3">冷蔵庫</a></li>
+        <li><a href="goods.php?id=4">洗濯機</a></li>
     </ul>
 </body>
 </html>

@@ -1,5 +1,14 @@
 <?php
-$id = $_GET['value'];
+$goodslist = [
+    'テレビ',
+    'パソコン',
+    '携帯電話',
+    '冷蔵庫',
+    '洗濯機'
+];
+
+$id = $_GET['id'];
+$itemName = $goodslist[$id];
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +20,7 @@ $id = $_GET['value'];
     <title>Document</title>
 </head>
 <body>
-    <p><?=$id?>が選択されました。</p>
+    <p><?=$itemName?>が選択されました。</p>
     <p><a href="lists.php">一覧ページに戻る</a></p>
 </body>
 </html>
