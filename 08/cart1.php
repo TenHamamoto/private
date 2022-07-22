@@ -1,9 +1,9 @@
 <?php
 $goods =   [
-    'name'         => '和風柄レターセット',
-    'price'        => 980,
+'name'  => '和風柄レターセット',
+'price' => 980,
 ];
-$count = $_POST['count'];
+$count      = $_POST['count'];
 $totalPrice = $goods['price'] * $count;
 ?>
 <!DOCTYPE html>
@@ -43,8 +43,8 @@ $totalPrice = $goods['price'] * $count;
             <th>小計</th>
         </tr>
         <tr>
-            <td>和風柄レターセット</td>
-            <td>980円</td>
+            <td><?= $goods['name'] ?></td>
+            <td><?= $goods['price'] ?></td>
             <td>
             <input type="text" name="count" value="<?=htmlspecialchars($count, ENT_QUOTES)?>">
             </td>
