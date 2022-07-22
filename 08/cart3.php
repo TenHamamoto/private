@@ -51,22 +51,22 @@ $total = $subTotal1 + $subTotal2;
         </tr>
         <tr>
             <td><?= $goods1['name'] ?></td>
-            <td><?= $goods1['price'] ?>円</td>
+            <td><?= $goods1['price'] ?></td>
             <td>
             <input type="text" name="count1" value="<?= htmlspecialchars($count1, ENT_QUOTES) ?>">
             </td>
-            <td><?= $subTotal1 ?>円</td>
+            <td><?= $subTotal1 ?></td>
         </tr>
         <tr>
             <td><?= $goods2['name'] ?></td>
-            <td><?= $goods2['price'] ?>円</td>
+            <td><?= $goods2['price'] ?></td>
             <td>
             <input type="text" name="count2" value="<?= htmlspecialchars($count2, ENT_QUOTES) ?>">
             </td>
-            <td><?= $subTotal2 ?>円</td>
+            <td><?= $subTotal2 ?></td>
         </tr>
         <tr>
-            <th colspan="3">合計</th><td><?= $total ?>円</td>
+            <th colspan="3">合計</th><td><?= $total ?></td>
         </tr>
     </table>
     <p><input type="submit" value="更新"></p>
