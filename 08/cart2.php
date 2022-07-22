@@ -1,14 +1,17 @@
 <?php
 $goods1 =   [
-    'name'         => '和風柄レターセット',
-    'price'        => 980,
+'name'  => '和風柄レターセット',
+'price' => 980,
 ];
 $goods2 =   [
-    'name'         => '毛筆ペン(細字)',
-    'price'        => 240,
+'name'  => '毛筆ペン(細字)',
+'price' => 240,
 ];
-$count1 = $_POST['count1'];
-$totalPrice = $goods['price'] * $count;
+$count1      = $_POST['count1'];
+$count2      = $_POST['count2'];
+$subTotal1   = $goods1['price'] * $count1;
+$subTotal1   = $goods2['price'] * $count2;
+$total       = $subTotal1 + $subTotal2;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -47,20 +50,23 @@ $totalPrice = $goods['price'] * $count;
             <th>小計</th>
         </tr>
         <tr>
-            <td>和風柄レターセット</td>
-            <td>980円</td>
+            <td><?= $goods1['name'] ?></td>
+            <td><?= $goods1['price'] ?></td>
             <td>
             <input type="text" name="count1" value="<?=htmlspecialchars($count1, ENT_QUOTES)?>">
             </td>
-            <td><?= $totalPrice ?></td>
+            <td><?= $subTotal1 ?></td>
         </tr>
         <tr>
-            <td>毛筆ペン(細字)</td>
-            <td>240円</td>
+            <td><?= $goods2['name'] ?></td>
+            <td><?= $goods2['price'] ?></td>
             <td>
             <input type="text" name="count2" value="<?=htmlspecialchars($count2, ENT_QUOTES)?>">
             </td>
-            <td><?= $totalPrice ?></td>
+            <td><?= $subTotal2 ?></td>
+        </tr>
+        <tr>
+            <th>合計</th>
         </tr>
     </table>
     <p><input type="submit" value="更新"></p>
