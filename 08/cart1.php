@@ -1,10 +1,9 @@
 <?php
-$goods = [
-  'name'  => '和風柄レターセット',
-  'price' => 980,
-];
+$goods['name']  = '和風柄レターセット';
+$goods['price'] = 980;
+
 $count = $_POST['count'];
-$totalPrice = $goods['price'] * $count;
+$totalPrice = $count * $goods['price'];
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -34,24 +33,22 @@ $totalPrice = $goods['price'] * $count;
 
 <body>
     <h1>ショッピングカート</h1>
-    <form action="" method="post">
-    <table>
-        <tr>
-            <th>商品名</th>
-            <th>単価</th>
-            <th>数量</th>
-            <th>小計</th>
-        </tr>
-        <tr>
-            <td><?= $goods['name'] ?></td>
-            <td><?= $goods['price'] ?></td>
-            <td>
-            <input type="text" name="count" value="<?= htmlspecialchars($count, ENT_QUOTES) ?>">
-            </td>
-            <td><?= $totalPrice ?></td>
-        </tr>
-    </table>
-    <p><input type="submit" value="更新"></p>
+    <form action="" method="post" novalidate>
+        <table>
+            <tr>
+                <th>商品名</th>
+                <th>単価</th>
+                <th>数量</th>
+                <th>小計</th>
+            </tr>
+            <tr>
+                <td><?= $goods['name'] ?></td>
+                <td><?= $goods['price'] ?>円</td>
+                <td><input type="text" name="count" value="<?= htmlspecialchars($count, ENT_QUOTES, 'UTF-8'); ?>"></td>
+                <td><?= $totalPrice ?>円</td>
+            </tr>
+        </table>
+        <p><input type="submit" value="送信"></p>
     </form>
 </body>
 

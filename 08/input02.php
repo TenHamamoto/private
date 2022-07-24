@@ -1,5 +1,4 @@
 <?php
-// 4つの値を受け取る
 $id     = $_POST['id'];
 $user   = $_POST['user'];
 $pass   = $_POST['pass'];
@@ -16,10 +15,10 @@ $gender = $_POST['gender'];
 </head>
 
 <body>
-    <h1><?= $user ?>さん、こんにちは！</h1>
-    <p>あなたのパスワードは「<?= $pass ?>」です。</p>
-    <p>ID: <?= $id ?></p>
-    <p>性別: <?= $gender ?></p>
+    <h1><?=$user?>さん、こんにちは！</h1>
+    <p>あなたのパスワードは「<?=$pass?>」です。</p>
+    <p>ID: <?=$id?></p>
+    <p>性別: <?=$gender?></p>
     <p><a href="input01.php">フォームに戻る</a></p>
 </body>
 

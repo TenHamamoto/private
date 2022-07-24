@@ -7,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <form action="input02.php" method="post">
-        <!-- 隠しフォーム -->
         <input type="hidden" name="id" value="1234">
         <p>ユーザ名：<input type="text" name="user"></p>
         <p>パスワード：<input type="password" name="pass"></p>
@@ -21,5 +19,4 @@
         <p><input type="submit" value="送信"></p>
     </form>
 </body>
-
 </html>
