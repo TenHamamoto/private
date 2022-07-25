@@ -1,19 +1,50 @@
 <?php
-$score = 100;
-if ($score >= 60) {
-    echo '合格です';
-} else {
-    echo '不合格です';
+$score  = '';
+$result = '';
+if (!empty($_POST)) {
+    $score = $_POST['score'];
 }
-
-echo '<br>';
-
-if ($score == 100) {
-    echo '満点おめでとう！';
-} elseif ($score >= 80) {
-    echo '素晴らしいです！';
-} elseif ($score >= 60) {
-    echo '合格です';
+if (!is_numeric($score)) {
+    $result = '数値を入力してください';
+} elseif ($score >= 101 || $score < 0) {
+    $result = '不正な点数です';
 } else {
-    echo '不合格です';
+    if ($score == 100) {
+        $result = '満点おめでとう！';
+    } elseif ($score >= 80) {
+        $result = '素晴らしいです！';
+    } elseif ($score >= 60) {
+        $result = '合格です';
+    } else {
+        $result = '不合格です';
+    }
 }
+?>
+
+<html>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<h1>テスト結果判定</h1><!-- <title>内も同様 -->
+<form action="" method="post" novalidate>
+    <p>点数：
+        <input type="text" name="score" size="3" maxlength="3" value="<?= htmlspecialchars($score, ENT_QUOTES, 'UTF-8'); ?>">点
+        <input type="submit" value="判定">
+    </p>
+    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
+        <p>判定：<?= $result ?></p>
+    <?php endif; ?>
+</form>
+
+</html>
