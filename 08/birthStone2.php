@@ -43,6 +43,8 @@ $stoneName = [
 ];
 
 $month = $_POST['month'];
+$monthMinus = --$month;
+$stoneNameMinus = $birthStones[$monthMinus];
 $stoneNamePlus = $birthStones[$month];
 ?>
 
@@ -75,6 +77,32 @@ $stoneNamePlus = $birthStones[$month];
 
 <body>
     <h1>誕生石</h1>
+    <!--
+    フォームの1月の送信値が「1」のままの場合：1月を選択した時にアメジストが表示されないように、誕生石名変換の直前に1マイナスする。
+    -->
+    <section>
+    <form action="" method="post" novalidate>
+        <p><?= $month ?>月の誕生石は<?= $stoneNameMinus ?>です！</p>
+        <div>
+        <p>誕生月を選んでください：</p>
+        <select name="month">
+            <option value="1">1月</option>
+            <option value="2">2月</option>
+            <option value="3">3月</option>
+            <option value="4">4月</option>
+            <option value="5">5月</option>
+            <option value="6">6月</option>
+            <option value="7">7月</option>
+            <option value="8">8月</option>
+            <option value="9">9月</option>
+            <option value="10">10月</option>
+            <option value="11">11月</option>
+            <option value="12">12月</option>
+        </select>
+        <p><input type="submit" value="送信"></p>
+        </div>
+    </form>
+    </section>
     <!--
     フォームの1月の送信値を「0」にする場合：0月が結果に表示されないように、表示直前に1プラスする。
     -->
