@@ -10,11 +10,17 @@ $goods = [
     ]
 ];
 
-$count1 = $_POST['count1'];
+$total = 0;
+
+/*$count1 = $_POST['count1'];
 $count2 = $_POST['count2'];
 $subTotal1 = $count1 * $goods[0]['price'];
-$subTotal2 = $count2 * $goods[1]['price'];
+$subTotal2 = $count2 * $goods[1]['price'];*/
 $total = $subTotal1 + $subTotal2;
+
+for ($i = 0; $i < count($goods); $i++) {
+    $total += $count1 * $goods[$i]['price'] + $count2 * $goods[$i]['price'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
