@@ -54,25 +54,24 @@ function h(?string $string): string
     <form action="" method="post" novalidate>
         <table>
             <tr>
-            <td>春<input type="text" name="spring" size="4" value="<?= h($spring) ?>">人</td>
+                <td>春</td>
+                <td><input type="text" name="spring" size="4" value="<?= h($spring) ?>">人</td>
             </tr>
             <tr>
-                <td>夏<input type="text" name="summer" size="4" value="<?= h($summer) ?>">人</td>
+                <td>夏</td>
+                <td><input type="text" name="summer" size="4" value="<?= h($summer) ?>">人</td>
             </tr>
             <tr>
-                <td>秋<input type="text" name="fall" size="4" value="<?= h($fall) ?>">人</td>
+                <td>秋</td>
+                <td><input type="text" name="fall" size="4" value="<?= h($fall) ?>">人</td>
             </tr>
             <tr>
-                <td>冬<input type="text" name="winter" size="4" value="<?= h($winter) ?>">人</td>
-            </tr>
-            </tr>
-            <tr>
-            </tr>
-            <tr>
-                <td><input type="submit" value="グラフ生成"></td>
+                <td>冬</td>
+                <td><input type="text" name="winter" size="4" value="<?= h($winter) ?>">人</td>
             </tr>
     </form>
     </table>
+    <p><input type="submit" value="グラフ生成"></p>
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
         <?php $c->printBarChart(); ?>
     <?php endif; ?>
