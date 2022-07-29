@@ -19,7 +19,8 @@ if (!empty($_POST)) {
         $_SESSION['userId'] = 'taro';
         header('Location: member.php'); // 会員ページに移動
         exit;
-    } elseif ($_POST['user'] !== 'taro' || $_POST['pass'] !== 'abcd') {
+    }
+    if ($_POST['user'] !== 'taro' || $_POST['pass'] !== 'abcd') {
         $loginError = 'ユーザIDかパスワードが正しくありません';
     }
 }
@@ -42,8 +43,8 @@ if (!empty($_POST)) {
 
 <body>
     <h1>ログイン</h1>
-    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
-        <p class='error'><?= $loginError ?></p>
+    <?php if (isset($loginError)) : ?>
+        <p class="error"><?= $loginError ?></p>
     <?php endif; ?>
     <p>ユーザIDとパスワードを入力して「ログイン」ボタンを押してください</p>
     <form action="" method="post" novalidate>
