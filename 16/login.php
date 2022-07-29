@@ -19,8 +19,7 @@ if (!empty($_POST)) {
         $_SESSION['userId'] = 'taro';
         header('Location: member.php'); // 会員ページに移動
         exit;
-    }
-    if ($_POST['user'] !== 'taro' || $_POST['pass'] !== 'abcd') {
+    } else {
         $loginError = 'ユーザIDかパスワードが正しくありません';
     }
 }
