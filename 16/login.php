@@ -16,7 +16,7 @@ if (!empty($_POST)) {
 
     if ($_POST['user'] === 'taro' and $_POST['pass'] === 'abcd') {
         $_SESSION['authenticated'] = true;
-        $_SESSION['userId'] = 'taro';
+        $_SESSION['userId'] = $user;
         header('Location: member.php'); // 会員ページに移動
         exit;
     } else {
