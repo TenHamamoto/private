@@ -11,7 +11,7 @@ if (!empty($_POST)) {
     $kana  = $_POST['kana'];
     $phone = $_POST['phone'];
     $isValidated = true;
-    
+
     if ($name === '' || mb_ereg_match('/^(\s|　)+$/', $name)) {
         $nameError = '氏名を入力してください';
         $isValidated = false;
@@ -32,7 +32,6 @@ if (!empty($_POST)) {
         $phoneError = '電話番号の形式が正しくありません';
         $isValidated = false;
     }
-
 }
 
 /**
@@ -85,58 +84,58 @@ function h(?string $string): string
 
 <body>
     <h1>ユーザー情報入力</h1>
-    <?php if ($isValidated === true):?>
+    <?php if ($isValidated === true) : ?>
         <table>
             <tr>
                 <th>氏名</th>
-                <td><?=h($name)?></td>
+                <td><?= h($name) ?></td>
             </tr>
             <tr>
                 <th>フリガナ</th>
-                <td><?=h($kana)?></td>
+                <td><?= h($kana) ?></td>
             </tr>
             <tr>
                 <th>電話番号</th>
-                <td><?=h($phone)?></td>
+                <td><?= h($phone) ?></td>
             </tr>
         </table>
         <p>入力ありがとうございました。</p>
         <p><a href="userform.php">戻る</a></p>
-    <?php else:?>
-    <p>下のフォームに記入して「送信」ボタンを押してください。</p>
-    <form action="" method="post" novalidate>
-        <table>
-            <tr>
-                <th>氏名</th>
-                <td>
-                    <input type="text" name="name" size="15" maxlength="15" value="<?= h($name) ?>">
-                    <?php if (isset($nameError)):?>
-                        <span class="error"><?=$nameError?></sp>
-                    <?php endif;?>
-                </td>
-            </tr>
-            <tr>
-                <th>フリガナ</th>
-                <td>
-                    <input type="text" name="kana" size="15" maxlength="15" value="<?= h($kana) ?>">
-                    <?php if (isset($kanaError)):?>
-                        <span class="error"><?=$kanaError?></sp>
-                    <?php endif;?>
-                </td>
-            </tr>
-            <tr>
-                <th>電話番号</th>
-                <td>
-                    <input type="text" name="phone" size="15" maxlength="15" value="<?= h($phone) ?>">
-                    <?php if (isset($phoneError)):?>
-                        <span class="error"><?=$phoneError?></sp>
-                    <?php endif;?>
-                </td>
-            </tr>
-        </table>
-        <p><input type="submit" value="送信"></p>
-    </form>
-    <?php endif;?>
+    <?php else : ?>
+        <p>下のフォームに記入して「送信」ボタンを押してください。</p>
+        <form action="" method="post" novalidate>
+            <table>
+                <tr>
+                    <th>氏名</th>
+                    <td>
+                        <input type="text" name="name" size="15" maxlength="15" value="<?= h($name) ?>">
+                        <?php if (isset($nameError)) : ?>
+                            <span class="error"><?= $nameError ?></sp>
+                            <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>フリガナ</th>
+                    <td>
+                        <input type="text" name="kana" size="15" maxlength="15" value="<?= h($kana) ?>">
+                        <?php if (isset($kanaError)) : ?>
+                            <span class="error"><?= $kanaError ?></sp>
+                            <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td>
+                        <input type="text" name="phone" size="15" maxlength="15" value="<?= h($phone) ?>">
+                        <?php if (isset($phoneError)) : ?>
+                            <span class="error"><?= $phoneError ?></sp>
+                            <?php endif; ?>
+                    </td>
+                </tr>
+            </table>
+            <p><input type="submit" value="送信"></p>
+        </form>
+    <?php endif; ?>
 </body>
 
 </html>

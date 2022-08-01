@@ -4,9 +4,14 @@ session_start();
 /* 前回と同じだが部分的に省略 */
 $_SESSION = [];
 $p = session_get_cookie_params();
-setcookie('PHPSESSID', '', time() - 1,
-  $p['path'], $p['domain'],
-  $p['secure'], $p['httponly']
+setcookie(
+    'PHPSESSID',
+    '',
+    time() - 1,
+    $p['path'],
+    $p['domain'],
+    $p['secure'],
+    $p['httponly']
 );
 session_destroy();
 ?>
