@@ -36,16 +36,12 @@ function h(?string $string): string
         <p>年齢：<input type="text" name="age" size="3" maxlength="3" value="<?=h($age)?>"></p>
         <p>メール：<input type="email" name="mail" value="<?=h($mail)?>"></p>
         <p><input type="submit" value="送信"></p>
-        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
-            <table>
-                <tr>
-                <th>名前</th><th>年齢</th><th>メール</th>
-                </tr>
-                <tr>
-                <td>$name</td><td>$age</td><td>$mail</td>
-                </tr>
-            </table>
-        <?php endif; ?>
     </form>
+    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
+            <table>
+                <tr><th>名前</th><th>年齢</th><th>メール</th></tr>
+                <tr><td><?= h($name) ?></td><td><?= h($age) ?></td><td><?= h($mail) ?></td></tr>
+            </table>
+    <?php endif; ?>
 </body>
 </html>
