@@ -39,7 +39,10 @@ function h(?string $string): string
         <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
             <table>
                 <tr>
-                <th></th><th></th><th></th>
+                <th>名前</th><th>年齢</th><th>メール</th>
+                </tr>
+                <tr>
+                <td>$name</td><td>$age</td><td>$mail</td>
                 </tr>
             </table>
         <?php endif; ?>
