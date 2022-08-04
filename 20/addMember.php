@@ -1,17 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 require_once dirname(__FILE__) . '/db.inc.php';
-require_once dirname(__FILE__) . '/../11/util.inc.php';
-
-session_start();
-
-$pdo = new PDO(
-    'mysql:host=localhost; dbname=mydb; charset=utf8',
-    'sysuser',
-    'secret'
-);
-$stmt = $pdo->query('SELECT * FROM members');
-$members = $stmt->fetchAll(PDO::FETCH_ASSOC);
+require_once dirname(__FILE__) . '/util.inc.php';
 
 $name    = '';
 $age     = '';
@@ -32,7 +24,7 @@ if (!empty($_POST)) {
         $stmt->execute();
         header('Location: member.php');
         exit;
-    }catch (PDOException $e) {
+    } catch (PDOException $e) {
         header('Content-Type: text/plain; charset=UTF-8', true, 500);
         exit($e->getMessage());
     }
@@ -40,15 +32,24 @@ if (!empty($_POST)) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>会員管理システム</title>
+    <style>
+        .error {
+            color: #900;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
-<h1>会員登録</h1>
-<p><a href="member.php">会員一覧に戻る</a></p>
+    <h1>会員登録</h1>
+    <p><a href="member.php">会員一覧に戻る</a></p>
     <form action="" method="post">
         <p>氏名：<input type="text" name="name" value="<?= h($name) ?>"></p>
         <p>年齢：<input type="text" name="age" value="<?= h($age) ?>"></p>
@@ -56,4 +57,5 @@ if (!empty($_POST)) {
         <p><input type="submit" value="送信"></p>
     </form>
 </body>
+
 </html>
