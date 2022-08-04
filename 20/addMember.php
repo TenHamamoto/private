@@ -8,7 +8,7 @@ require_once dirname(__FILE__) . '/util.inc.php';
 $name    = '';
 $age     = '';
 $address = '';
-$result  =  0;
+//$result   =  0;
 $isValidated = false;
 
 if (!empty($_POST)) {
@@ -20,15 +20,15 @@ if (!empty($_POST)) {
     if ($name === '') {
         $nameError = '※氏名を入力してください';
         $isValidated = false;
-    }
-    if (mb_strlen($name, 'utf8') > 10) {
-        $nameError = '氏名は10文字以内で入力してください';
+    } elseif (mb_strlen($name, 'utf8') > 10) {
+        $nameError = '※氏名は10文字以内で入力してください';
         $isValidated = false;
     }
 
     if ($age === '' || mb_ereg_match('/^(\s|　)+$/', $age)) {
         $age = null;
-        $ageError = '年齢は0以上の数値を入力してください';
+    }    elseif (!is_numeric($age) || $age < 0) {
+        $ageError = '※年齢は0以上の数値を入力してください';
         $isValidated = false;
     }
 
@@ -69,7 +69,7 @@ if (!empty($_POST)) {
 <body>
     <h1>会員登録</h1>
     <p><a href="member.php">会員一覧に戻る</a></p>
-<?php if ($result == 1): ?>
+<?php if ($isValidated == true): ?>
     <p>登録完了しました。</p>
 <?php else: ?>
     <form action="" method="post">
