@@ -36,15 +36,6 @@ echo '<pre>';
 print_r($recipe);
 echo '</pre>';
 
-foreach ($recipe as $key => $value) {
-    if ($value === 'code') {
-        echo $key . '<br>';
-    }
-}
-
-foreach ($recipe as $value) {
-    echo $value['code'] . '<br>' . $value['name'] . '<br>' . $value['price'] . '<br>';
-}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
