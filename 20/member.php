@@ -1,11 +1,12 @@
-<?php
+<?php declare(strict_types=1);
+
 require_once dirname(__FILE__) . '/db.inc.php';
+
 try {
     $pdo = dbConnect();
     // クエリが長い場合は句ごとに改行する
     $sql = 'SELECT *
-        FROM members
-        ORDER BY created_at DESC';
+        FROM members';
     // メソッドは変数を介さず連続して記述することも可能
     $members = $pdo->query($sql)->fetchAll();
 } catch (PDOException $e) {
