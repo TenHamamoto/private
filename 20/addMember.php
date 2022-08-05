@@ -1,38 +1,29 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 require_once dirname(__FILE__) . '/db.inc.php';
 require_once dirname(__FILE__) . '/util.inc.php';
+require_once dirname(__FILE__) . '/Validation.php';
 
 $name    = '';
 $age     = '';
 $address = '';
-//$result   =  0;
-$isValidated = false;
+
+$error['name'] = '';
+$error['age']  = '';
 
 if (!empty($_POST)) {
     $name    = $_POST['name'];
     $age     = $_POST['age'];
     $address = $_POST['address'];
-    $isValidated = true;
 
-    if ($name === '') {
-        $nameError = '※氏名を入力してください';
-        $isValidated = false;
-    } elseif (mb_strlen($name, 'utf8') > 10) {
-        $nameError = '※氏名は10文字以内で入力してください';
-        $isValidated = false;
-    }
+    $v = new Validation();
+    $error['name'] = $v->validName($name);
 
-    if ($age === '' || mb_ereg_match('/^(\s|　)+$/', $age)) {
-        $age = null;
-    }    elseif (!is_numeric($age) || $age < 0) {
-        $ageError = '※年齢は0以上の数値を入力してください';
-        $isValidated = false;
-    }
+    $res = $v->validAge($age);
+    $age          = $res['age'];
+    $error['age'] = $res['err'];
 
-    if ($isValidated === true) {
+    if (!isset($error['name']) && !isset($error['age'])) {
     try {
         $pdo = dbConnect();
         $stmt = $pdo->prepare(
@@ -69,14 +60,14 @@ if (!empty($_POST)) {
 <body>
     <h1>会員登録</h1>
     <p><a href="member.php">会員一覧に戻る</a></p>
-<?php if ($isValidated == true): ?>
+<?php if (!isset($error)): ?>
     <p>登録完了しました。</p>
 <?php else: ?>
     <form action="" method="post">
         <p>氏名：<input type="text" name="name" value="<?= h($name) ?>">
-        <?php if (isset($nameError)):?><span class="error"><?=$nameError?></span><?php endif;?></p>
+        <?php if (!empty($error['name'])):?><span class="error"><?= $error['name'] ?></span><?php endif;?></p>
         <p>年齢：<input type="text" name="age" value="<?= h($age) ?>">
-        <?php if (isset($ageError)):?><span class="error"><?=$ageError?></span><?php endif;?></p>
+        <?php if (!empty($error['age'])):?><span class="error"><?= $error['age'] ?></span><?php endif;?></p>
         <p>住所：<input type="text" name="address" value="<?= h($address) ?>"></p>
         <p><input type="submit" value="送信"></p>
     </form>
