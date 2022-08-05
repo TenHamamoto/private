@@ -9,7 +9,7 @@ try {
 
     $title       = '';
     $article     = '';
-    $category_id = 1;
+    $category_id = '';
     $isValidated = false;
 
     if (!empty($_POST)) {
@@ -40,20 +40,23 @@ try {
             $stmt->bindValue(':title', $title, PDO::PARAM_STR);
             $stmt->bindValue(':article', $article, PDO::PARAM_STR);
             $stmt->execute();
+
+            //カテゴリー名の変換処理
+            $sql = 'SELECT * FROM categories WHERE id = :category_id';
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':category_id', $category_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $c = $stmt->fetch();
+            $category = $c['name'];
         }
     }
+
+    $stmt = $pdo->query('SELECT * FROM categories');
+    $categories = $stmt->fetchAll();
 } catch (PDOException $e) {
     header('Content-Type: text/plain; charset=UTF-8', true, 500);
-    $sql = 'INSERT INTO categories WHERE id = ?';
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':category_id', $category_id, PDO::PARAM_INT);
-    $stmt->execute();
-    $c = $stmt->fetch();
-    $category = $c['name'];
     exit($e->getMessage());
 }
-$stmt = $pdo->query('SELECT * FROM categories');
-$categories = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -78,7 +81,7 @@ $categories = $stmt->fetchAll();
                     <tr>
                         <th>カテゴリ</th>
                         <td>
-                            <?= $category_id ?>
+                            <?= $category ?>
                         </td>
                     </tr>
                     <tr>
@@ -104,7 +107,7 @@ $categories = $stmt->fetchAll();
                             <td>
                                 <select name="category">
                                     <?php foreach ($categories as $category) : ?>
-                                        <option <?php if ($category["id"] == $category_id) echo 'selected'; ?>><?= h($category["name"]) ?></option>
+                                        <option value="<?= $category['id'] ?>" <?= $category['id'] == $category_id ? 'selected' : '' ?>><?= h($category['name']) ?></option>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -120,7 +123,7 @@ $categories = $stmt->fetchAll();
                         <tr>
                             <th>記事</th>
                             <td>
-                                <?php if (isset($articleError)) : ?><p class="error"><?= h(nl2br($articleError)) ?></p><?php endif; ?></p>
+                                <?php if (isset($articleError)) : ?><p class="error"><?= nl2br(h($articleError)) ?></p><?php endif; ?></p>
                                 <textarea name="article" cols="60" rows="5"></textarea>
                             </td>
                         </tr>
