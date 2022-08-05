@@ -87,13 +87,13 @@ try {
                     <tr>
                         <th>タイトル</th>
                         <td>
-                            <?= $title ?>
+                            <?= h($title) ?>
                         </td>
                     </tr>
                     <tr>
                         <th>記事</th>
                         <td>
-                            <?= $article ?>
+                            <?= nl2br(h($article)) ?>
                         </td>
                     </tr>
                 </table>
@@ -107,7 +107,7 @@ try {
                             <td>
                                 <select name="category">
                                     <?php foreach ($categories as $category) : ?>
-                                        <option value="<?= $category['id'] ?>" <?= $category['id'] == $category_id ? 'selected' : '' ?>><?= h($category['name']) ?></option>
+                                        <option value="<?= $category['id'] ?>" <?= $category['id'] == $category_id ? 'selected' : '' ?>><?= $category['name'] ?></option>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -116,14 +116,14 @@ try {
                         <tr>
                             <th>タイトル</th>
                             <td>
-                                <?php if (isset($titleError)) : ?><p class="error"><?= h($titleError) ?></p><?php endif; ?></p>
+                                <?php if (isset($titleError)) : ?><p class="error"><?= $titleError ?></p><?php endif; ?></p>
                                 <input type="text" name="title" size="60" value="" />
                             </td>
                         </tr>
                         <tr>
                             <th>記事</th>
                             <td>
-                                <?php if (isset($articleError)) : ?><p class="error"><?= nl2br(h($articleError)) ?></p><?php endif; ?></p>
+                                <?php if (isset($articleError)) : ?><p class="error"><?= $articleError ?></p><?php endif; ?></p>
                                 <textarea name="article" cols="60" rows="5"></textarea>
                             </td>
                         </tr>
