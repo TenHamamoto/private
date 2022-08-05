@@ -4,9 +4,18 @@ require_once dirname(__FILE__) . '/db.inc.php';
 
 try {
     $pdo = dbConnect();
-    $sql = 'SELECT categories.id, categories.name,articles.category_id, articles.id, articles.title, articles.article, articles.created_at
-    FROM categories INNER JOIN articles
-    ON categories.id = articles.category_id ORDER BY created_at DESC;';
+    $sql = 'SELECT
+    c.id,
+    c.name,
+    a.category_id,
+    a.id,
+    a.title,
+    a.article,
+    a.created_at
+    FROM categories c
+    INNER JOIN articles a
+    ON c.id = a.category_id
+    ORDER BY created_at DESC;';
     $articles = $pdo->query($sql)->fetchAll();
 } catch (PDOException $e) {
     header('Content-Type: text/plain; charset=UTF-8', true, 500);
