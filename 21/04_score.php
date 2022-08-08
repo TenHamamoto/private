@@ -1,8 +1,11 @@
 <?php
 
 if ($score == 70) {
+
     echo $score . '点';
+
 } else {
+
 if ($score >= 80) {
     echo '優';
 } elseif ($score < 80) {
@@ -12,4 +15,5 @@ if ($score >= 80) {
 } elseif ($score < 50) {
     echo '不可';
 }
+
 }
