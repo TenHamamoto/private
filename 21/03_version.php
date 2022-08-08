@@ -1,7 +1,3 @@
 <?php
 
-function phpVer($num = 7)
-{
-    return 'PHPの現行バージョンは' . $num . 'です。';
-}
-echo phpVer(8.2);
+echo str_replace('7', '8.2', 'PHPの現行バージョンは7です。');
