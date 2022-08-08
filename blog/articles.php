@@ -6,6 +6,20 @@ require_once dirname(__FILE__) . '/db.inc.php';
 
 try {
     $pdo = dbConnect();
+
+    if (!empty($_GET)) {
+        //パラメータIDを元にWHEREで結合テーブルを全取得;
+    $sql  = 'SELECT * FROM categories WHERE id = :category_id';
+        //プリペアードステートメント
+    $stmt = $pdo->prepare($sql);
+    }else {
+        //今までの結合テーブルを全取得
+        $sql = ;
+        //クエリメソッド
+        $stmt = ;
+    }
+    $articles = $stmt->fetchAll();
+
     $sql = 'SELECT
     c.id,
     c.name,
@@ -24,6 +38,8 @@ try {
     exit($e->getMessage());
 }
 
+$stmt = $pdo->query('SELECT * FROM categories');
+$categories = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -57,8 +73,10 @@ try {
             <nav class="sidebox">
                 <h2>カテゴリ</h2>
                 <ul>
-                    <li><a href="?c=1">カテゴリ1</a></li>
-                    <li><a href="?c=2">カテゴリ2</a></li>
+                    <li><a href="">全件表示</a></li>
+                    <?php foreach ($categories as $category) : ?>
+                    <li><a href="?c=<?= $category['id'] ?>"><?= $category['name'] ?></a></li>
+                    <?php endforeach; ?>
                 </ul>
             </nav>
             <p class="right"><a href="post_article.php">記事の投稿</a></p>
