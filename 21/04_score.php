@@ -1,10 +1,15 @@
 <?php
-if ($age >= 50) {
-    echo '不可';
-} elseif ($age >= 16) {
-    echo '高校生です';
-} elseif ($age >= 13) {
-    echo '中学生です';
+
+if ($score == 70) {
+    echo $score . '点';
 } else {
-    echo '子供です';
+if ($score >= 80) {
+    echo '優';
+} elseif ($score < 80) {
+    echo '良';
+} elseif ($score < 65) {
+    echo '可';
+} elseif ($score < 50) {
+    echo '不可';
+}
 }
