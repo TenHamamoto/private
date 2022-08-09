@@ -11,7 +11,6 @@ for ($i = 0; $i < count($arrNums); $i++) {
     } else {
         $odd .= $arrNums[$i] . ' ';
     }
-
 }
 echo $even . '<br>' . $odd;
 // 偶数：42 54 32 8
