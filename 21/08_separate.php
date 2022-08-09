@@ -7,15 +7,33 @@ $odd = '奇数：';
 // 偶数：42 54 32 8
 // 奇数：7 35 71 13 21 45
 
+echo '<pre>';
+print_r($arrNums);
+echo '</pre>';
 
-$alph = 'A-B-C';
 
-/* A | B | C | D | 4個 */
+for ($i = 0; $i < count($arrNums); $i++) {
 
-$alphArr = explode('-', $alph);
+    echo $arrNums[$i];
 
-$count = array_push($alphArr, 'D');
+    
 
-array_push($alphArr, $count . '個');
 
-echo implode(' | ', $alphArr);
+    echo '<br>';
+}
+
+
+for ($i = 1; $i <= 100; $i++) {
+
+    echo $i;
+
+    if ($i % 3 === 0 && $i % 5 === 0) {
+        echo ':FizzBuzz';
+    } elseif ($i % 3 === 0) {
+        echo ':Fizz';
+    } elseif ($i % 5 === 0) {
+        echo ':Buzz';
+    }
+
+    echo '<br>';
+}
