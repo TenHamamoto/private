@@ -6,9 +6,9 @@ $odd     = '奇数：';
 
 for ($i = 0; $i < count($arrNums); $i++) {
 
-    if(($arrNums[$i] % 2) === 0){
+    if (($arrNums[$i] % 2) === 0) {
         $even .= $arrNums[$i] . ' ';
-    }else{
+    } else {
         $odd .= $arrNums[$i] . ' ';
     }
 
