@@ -10,7 +10,7 @@ $price = 9876;
  */
 function getTaxPrice(?int $price): float
 {
-    return floor($price)* 1.1;
+    return floor($price) * 1.1;
 }
 
 echo '税込み価格は' . number_format(getTaxPrice($price)) . '円です。';

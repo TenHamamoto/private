@@ -1,24 +1,19 @@
 <?php
 $arrNums = [1, 7, 11];
-// 平均値は6です。
 
+/**
+ * 配列内で数値を指定すると、四捨五入した平均値を返す
+ *
+ * @param array|null $arrNums
+ * @return integer
+ */
 function getAvg(?array $arrNums): int
 {
     $total = 0;
     foreach ($arrNums as $Num) {
         $total += $Num;
     }
-    return round($total);
+    return round($total) / count($arrNums);
 }
 
 echo '平均値は' . getAvg($arrNums) . 'です。';
-
-
-/**
- * 購入商品価格の配列を指定すると、
- * 10%の税込み価格を返す
- *
- * @param array|null $arrNums
- * @param integer|null $tax
- * @return integer
- */
