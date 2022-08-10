@@ -1,10 +1,10 @@
 <?php
 
-const height = 175;
-const weight = 70;
+const BMI_HEIGHT = 175;
+const BMI_WEIGHT = 70;
 
-$BMI = number_format(weight / (height * 0.01) / (height * 0.01), 2);
-$proper = number_format((weight - (height * 0.01) * (height * 0.01) * 22), 2);
+$bmiBMI = number_format(BMI_WEIGHT / (BMI_HEIGHT * 0.01) / (BMI_HEIGHT * 0.01), 2);
+$bmiProper = number_format((BMI_WEIGHT - (BMI_HEIGHT * 0.01) * (BMI_HEIGHT * 0.01) * 22), 2);
 
-echo '身長は' . height . 'cmで体重は' . weight . 'kgのときのBMI値は' . $BMI . 'で、<br>
-適正体重は＋' . $proper . 'kgです。';
+echo '身長は' . BMI_HEIGHT . 'cmで体重は' . BMI_WEIGHT . 'kgのときのBMI値は' . $bmiBMI . 'で、<br>
+適正体重は＋' . $bmiProper . 'kgです。';
