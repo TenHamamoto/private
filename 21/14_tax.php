@@ -2,7 +2,8 @@
 $price = 9876;
 
 /**
- * Undocumented function
+ * 税抜き価格の変数を指定すると、
+ * 10%の税込み価格を返す
  *
  * @param integer $price
  * @return integer
